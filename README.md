@@ -20,7 +20,6 @@ Interferometric synthetic aperture radar, abbreviated InSAR (or deprecated IfSAR
 
 | Field Name                   | Type                      | Description |
 | ---------------------------- | ------------------------- | ----------- |
-| insar:parallel_baseline      | \[number]                 |             |
 | insar:perpendicular_baseline | \[number]                 | The distance between two acquisition spots perpendicular to the satellite viewing direction            |
 | insar:temporal_baseline      | \[number]                 | The time period between the reference and secondary acquisitions |
 | insar:height_of_ambiguity    | \[number]                 |  This height of ambiguity is the 2 π interferometric phase cycle scaled with the perpendicular baseline between both satellites. The smaller the height of ambiguity is, the lower is the influence of errors caused by the instrument or the different decorrelation effects. |
