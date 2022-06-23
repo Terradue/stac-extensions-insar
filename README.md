@@ -1,53 +1,45 @@
-# Template Extension Specification
+# Interferometry Extension Specification
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v1.0.0/schema.json>
-- **Field Name Prefix:** template
-- **Scope:** Item, Collection
+- **Title:** Interferometry
+- **Identifier:** <https://stac-extensions.github.io/insar/v1.0.0/schema.json>
+- **Field Name Prefix:** insar
+- **Scope:** Item
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Owner**: @fabricebrito, @emmanuelmathot
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-This is the place to add a short introduction.
+This document explains the interferometry Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
+
+Interferometric synthetic aperture radar, abbreviated InSAR (or deprecated IfSAR), is a radar technique used in geodesy and remote sensing. This geodetic method uses two or more synthetic aperture radar (SAR) images to generate maps of surface deformation or digital elevation, using differences in the phase of the waves returning to the satellite or aircraft. The technique can potentially measure millimetre-scale changes in deformation over spans of days to years. It has applications for geophysical monitoring of natural hazards, for example earthquakes, volcanoes and landslides, and in structural engineering, in particular monitoring of subsidence and structural stability.
 
 - Examples:
   - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
-  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
-## Item Properties and Collection Fields
+## Item Properties 
 
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field... |
-| template:another_one | \[number]                 | Describe the field... |
+| Field Name                   | Type                      | Description |
+| ---------------------------- | ------------------------- | ----------- |
+| insar:parallel_baseline      | \[number]                 |             |
+| insar:perpendicular_baseline | \[number]                 | The distance between two acquisition spots perpendicular to the satellite viewing direction            |
+| insar:temporal_baseline      | \[number]                 | The time period between the reference and secondary acquisitions |
+| insar:height_of_ambiguity    | \[number]                 |  This height of ambiguity is the 2 π interferometric phase cycle scaled with the perpendicular baseline between both satellites. The smaller the height of ambiguity is, the lower is the influence of errors caused by the instrument or the different decorrelation effects. |
+| reference_datetime           | \[string]                   | Date of reference acquisition, in UTC. It is formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).  |
+| secondary_datetime           | \[string]                   | Date of secondary acquisition, in UTC. It is formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).  |
 
-### Additional Field Information
+## Best Practices
 
-#### template:new_field
+One of the emerging best practices is to use [Asset Roles](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#asset-roles) 
+to provide clients with more information about the assets in an item. The following list includes a shared vocabulary for some common SAR assets. 
+This list should not be considered definitive, and implementors are welcome to use other asset roles. If consensus and tooling consolidates around 
+these role names then they will be specified in the future as more standard than just 'best practices'.
 
-This is a much more detailed description of the field `template:new_field`...
-
-### XYZ Object
-
-This is the introduction for the purpose and the content of the XYZ Object...
-
-| Field Name  | Type   | Description |
-| ----------- | ------ | ----------- |
-| x           | number | **REQUIRED**. Describe the required field... |
-| y           | number | **REQUIRED**. Describe the required field... |
-| z           | number | **REQUIRED**. Describe the required field... |
-
-## Relation types
-
-The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
-
-| Type                | Description |
-| ------------------- | ----------- |
-| fancy-rel-type      | This link points to a fancy resource. |
+| Role Name       | Description                                                            |
+| --------------- | ---------------------------------------------------------------------- |
+| coherence       | 2D Coherence [0-1] from filtered interferogram                         |
+| phase           | 2D Filtered wrapped interferogram geocoded in radians                  |
+| unwrapped_phase | 2D Filtered unwrapped interferogram geocoded in radians                |
+| amplitude       | 2D Amplitude of interferogram in Watt                                  |
 
 ## Contributing
 
