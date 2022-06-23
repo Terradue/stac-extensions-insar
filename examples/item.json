@@ -1,56 +1,58 @@
 {
   "stac_version": "1.0.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/template/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/insar/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sar/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/sat/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/processing/v1.1.0/schema.json"
   ],
   "type": "Feature",
   "id": "item",
   "bbox": [
-    172.9,
-    1.3,
-    173,
-    1.4
+    -30.046712956246324,
+    36.997096120903144,
+    -26.79777995624633,
+    39.01881312090315
   ],
   "geometry": {
     "type": "Polygon",
     "coordinates": [
       [
         [
-          172.9,
-          1.3
+          -30.046712956246324,
+          36.997096120903144
         ],
         [
-          173,
-          1.3
+          -26.79777995624633,
+          36.997096120903144
         ],
         [
-          173,
-          1.4
+          -26.79777995624633,
+          39.01881312090315
         ],
         [
-          172.9,
-          1.4
+          -30.046712956246324,
+          39.01881312090315
         ],
         [
-          172.9,
-          1.3
+          -30.046712956246324,
+          36.997096120903144
         ]
       ]
     ]
   },
   "properties": {
-    "datetime": "2020-12-11T22:38:32Z",
-    "template:new_field": "test",
-    "template:xyz": {
-      "x": 1,
-      "y": 2,
-      "z": 3
-    },
-    "template:another_one": [
-      1,
-      2,
-      3
-    ]
+    "start_datetime": "2022-03-15T07:57:41.153116Z",
+    "end_datetime": "2022-03-27T07:58:06Z",
+    "sar:polarizations": "VV",
+    "processing:level": "L2",
+    "sat:orbit_state": "descending",
+    "sat:relative_orbit": "82",
+    "insar:height_of_ambiguity": -1.27421945559537858E+03,
+    "insar:temporal_baseline": 12,
+    "insar:perpendicular_baseline": 1.21935032939007009E+01,
+    "insar:reference_datetime": "2022-03-15T07:57:41Z",
+    "insar:secondary_datetime": "2022-03-27T07:58:06Z"
   },
   "links": [
     {
@@ -60,8 +62,7 @@
   ],
   "assets": {
     "data": {
-      "href": "https://example.com/examples/file.xyz",
-      "template:new_field": "test"
+      "href": "https://example.com/examples/file.xyz"
     }
   }
 }
