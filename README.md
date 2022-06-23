@@ -23,8 +23,8 @@ Interferometric synthetic aperture radar, abbreviated InSAR (or deprecated IfSAR
 | insar:perpendicular_baseline | \[number]                 | The distance between two acquisition spots perpendicular to the satellite viewing direction            |
 | insar:temporal_baseline      | \[number]                 | The time period between the reference and secondary acquisitions |
 | insar:height_of_ambiguity    | \[number]                 |  This height of ambiguity is the 2 π interferometric phase cycle scaled with the perpendicular baseline between both satellites. The smaller the height of ambiguity is, the lower is the influence of errors caused by the instrument or the different decorrelation effects. |
-| reference_datetime           | \[string]                   | Date of reference acquisition, in UTC. It is formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).  |
-| secondary_datetime           | \[string]                   | Date of secondary acquisition, in UTC. It is formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).  |
+| insar:reference_datetime           | \[string]                   | Date of reference acquisition, in UTC. It is formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).  |
+| insar:secondary_datetime           | \[string]                   | Date of secondary acquisition, in UTC. It is formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).  |
 
 ## Best Practices
 
