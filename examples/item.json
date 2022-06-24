@@ -7,7 +7,7 @@
     "https://stac-extensions.github.io/processing/v1.1.0/schema.json"
   ],
   "type": "Feature",
-  "id": "item",
+  "id": "S1_GUNW_D_R_082_TOPS_20220315_20220327_075745_PP_4EDA3",
   "bbox": [
     -30.046712956246324,
     36.997096120903144,
@@ -42,12 +42,18 @@
     ]
   },
   "properties": {
-    "start_datetime": "2022-03-15T07:57:41.153116Z",
-    "end_datetime": "2022-03-27T07:58:06Z",
+    "date_time": "2022-03-21T07:57:45.000Z",
     "sar:polarizations": "VV",
-    "processing:level": "L2",
+    "processing:level": "L3",
+    "processing:lineage": "Geocoded Unwrapped Interferogram TOPSAR",
+    "processing:sftware": {
+      "ESA SNAP Toolbox": "8.0",
+      "SNAPHU": "1.4.2"
+    },
     "sat:orbit_state": "descending",
     "sat:relative_orbit": "82",
+    "view:azimuth": "-11.0",
+    "view:incidence_angle": "30.0",
     "insar:height_of_ambiguity": -1.27421945559537858E+03,
     "insar:temporal_baseline": 12,
     "insar:perpendicular_baseline": 1.21935032939007009E+01,
@@ -58,11 +64,40 @@
     {
       "href": "https://example.com/examples/item.json",
       "rel": "self"
+    },
+    {
+      "href": "https://example.com/sentinel1/S1A_IW_SLC__1SDV_20220315T075739_20220315T075806_042329_050BCA_1825.json",
+      "rel": "reference"
+    },
+    {
+      "href": "https://example.com/sentinel1/S1A_IW_SLC__1SDV_20220327T075739_20220327T075806_042504_0511BC_4D8D.json",
+      "rel": "secondary"
     }
   ],
   "assets": {
-    "data": {
-      "href": "https://example.com/examples/file.xyz"
+    "coherence": {
+      "href": "https://example.com/examples/S1_GUNW_D_R_082_TOPS_20220315_20220327_075745_PP_4EDA3_COH.tiff",
+      "roles": [
+        "coherence"
+      ]
+    },
+    "phase": {
+      "href": "https://example.com/examples/S1_GUNW_D_R_082_TOPS_20220315_20220327_075745_PP_4EDA3_PHA.tiff",
+      "roles": [
+        "phase"
+      ]
+    },
+    "unw_pha": {
+      "href": "https://example.com/examples/S1_GUNW_D_R_082_TOPS_20220315_20220327_075745_PP_4EDA3_UNW.tiff",
+      "roles": [
+        "unwrapped_phase"
+      ]
+    },
+    "amplitude": {
+      "href": "https://example.com/examples/S1_GUNW_D_R_082_TOPS_20220315_20220327_075745_PP_4EDA3_AMP.tiff",
+      "roles": [
+        "amplitude"
+      ]
     }
   }
 }
