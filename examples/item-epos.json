@@ -6,7 +6,8 @@
     "https://stac-extensions.github.io/sat/v1.1.0/schema.json",
     "https://stac-extensions.github.io/processing/v1.1.0/schema.json",
     "https://stac-extensions.github.io/view/v1.1.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/scientific/v1.1.0/schema.json"
   ],
   "type": "Feature",
   "id": "InU_CNRIREA_20200814_20200820_ECJT",
