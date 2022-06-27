@@ -66,12 +66,13 @@ to provide clients with more information about the assets in an item. The follow
 This list should not be considered definitive, and implementors are welcome to use other asset roles. If consensus and tooling consolidates around 
 these role names then they will be specified in the future as more standard than just 'best practices'.
 
-| Role Name       | Description                                             |
-| --------------- | ------------------------------------------------------- |
-| coherence       | 2D Coherence [0-1] from filtered interferogram          |
-| phase           | 2D Filtered wrapped interferogram geocoded in radians   |
-| unwrapped_phase | 2D Filtered unwrapped interferogram geocoded in radians |
-| amplitude       | 2D Amplitude of interferogram in Watt                   |
+| Role Name        | Description                                             |
+| ---------------- | ------------------------------------------------------- |
+| coherence        | 2D Coherence [0-1] from filtered interferogram          |
+| phase            | 2D Filtered wrapped interferogram geocoded in radians   |
+| unwrapped_phase  | 2D Filtered unwrapped interferogram geocoded in radians |
+| los_displacement | 2D Displacement in the satellite line of sight (LOS)    |
+| amplitude        | 2D Amplitude of interferogram in Watt                   |
 
 Combined with "standard" asset roles `data`, `overview`, `visual` and `metadata`, specific related assets can be included.
 
