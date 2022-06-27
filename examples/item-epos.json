@@ -1,0 +1,149 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/insar/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sar/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/sat/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/processing/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/view/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "type": "Feature",
+  "id": "InU_CNRIREA_20200814_20200820_ECJT",
+  "bbox": [
+    -30.046712956246324,
+    36.997096120903144,
+    -26.79777995624633,
+    39.01881312090315
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          123.0072,
+          10.454015
+        ],
+        [
+          123.65187,
+          13.726985
+        ],
+        [
+          125.87542,
+          13.300287
+        ],
+        [
+          125.20314,
+          10.018878
+        ],
+        [
+          123.0072,
+          10.454015
+        ]
+      ]
+    ]
+  },
+  "properties": {
+    "created": "2020-08-31T07:24:01Z",
+    "date_time": "2020-08-14T21:30:32Z",
+    "start_datetime": "2020-08-14T21:30:39.872810Z",
+    "end_datetime": "2020-08-20T21:30:17.536197Z",
+    "processing:level": "L3",
+    "processing:lineage": "Parallel SBAS Interferometry Chain",
+    "processing:sftware": {
+      "CNR-IREA P-SBAS": "28"
+    },
+    "proj:epsg": "4326",
+    "sat:orbit_state": "descending",
+    "sat:relative_orbit": "82",
+    "sar:instrument_mode": "IW",
+    "sar:polarizations": "VV",
+    "sar:looks_range": 20,
+    "sar:looks_azimuth" : 5,
+    "sar:observation_direction": "right",
+    "sar:resolution_range": 73,
+    "sar:resolution_azimuth": 73,
+    "sci:publications": [
+      {
+        "doi": "10.1109/TGRS.2002.803792",
+        "citation": "A new algorithm for surface deformation monitoring based on small baseline differential SAR interferograms"
+      },
+      {
+        "doi": "10.1109/JSTARS.2014.2322671",
+        "citation": "SBAS-DInSAR Parallel Processing for Deformation Time-Series Computation"
+      }
+    ],
+    "view:azimuth": "-11.0",
+    "view:incidence_angle": "30.0",
+    "insar:height_of_ambiguity": -1.27421945559537858E+03,
+    "insar:temporal_baseline": 12,
+    "insar:perpendicular_baseline": 1.21935032939007009E+01,
+    "insar:reference_datetime": "2022-03-15T07:57:41Z",
+    "insar:secondary_datetime": "2022-03-27T07:58:06Z",
+    "insar:processsing_dem": "SRTM1",
+    "insar:geocoding_dem": "SRTM1",
+  },
+  "links": [
+    {
+      "href": "https://raw.githubusercontent.com/stac-extensions/insar/main/examples/item-epos.json",
+      "rel": "self"
+    },
+    {
+      "href": "https://gitlab.com/epos-tcs-satdata/productmetadata/-/blob/master/samples/UNWRAPPED_INTERFEROGRAM_InU_CNRIREA_20200814_20200820_ECJT.metadata",
+      "rel": "derived_from"
+    },
+    {
+      "href": "https://example.com/sentinel1/S1A_IW_SLC__1SDV_20200814T213039_20200814T213109_033908_03EEE0_9B1B.json",
+      "rel": "reference"
+    },
+    {
+      "href": "https://example.com/sentinel1/S1B_IW_SLC__1SSV_20200820T213017_20200820T213047_023012_02BB06_30BE.json",
+      "rel": "secondary"
+    }
+  ],
+  "assets": {
+    "coh": {
+      "href": "https://example.com/examples/Coh_CNRIREA_20200814_20200820_ECJT.tiff",
+      "roles": [
+        "visual",
+        "data",
+        "coherence"
+      ]
+    },
+    "coh_th": {
+      "href": "https://example.com/examples/Coh_CNRIREA_20200814_20200820_ECJT.png",
+      "roles": [
+        "thumbnail",
+        "coherence"
+      ]
+    },
+    "phase": {
+      "href": "https://example.com/examples/InW_CNRIREA_20200814_20200820_ECJT.tiff",
+      "roles": [
+        "data",
+        "phase"
+      ]
+    },
+    "phase_th": {
+      "href": "https://example.com/examples/InW_CNRIREA_20200814_20200820_ECJT.tiff",
+      "roles": [
+        "thumbnail",
+        "phase"
+      ]
+    },
+    "unw_pha": {
+      "href": "https://example.com/examples/UNWRAPPED_INTERFEROGRAM_InU_CNRIREA_20200814_20200820_ECJT.tiff",
+      "roles": [
+        "data",
+        "unwrapped_phase"
+      ]
+    },
+    "unw_pha_th": {
+      "href": "https://example.com/examples/UNWRAPPED_INTERFEROGRAM_InU_CNRIREA_20200814_20200820_ECJT.png",
+      "roles": [
+        "thumbnail",
+        "unwrapped_phase"
+      ]
+    }
+  }
+}

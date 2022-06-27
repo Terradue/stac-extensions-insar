@@ -14,7 +14,8 @@ Interferometric synthetic aperture radar, abbreviated InSAR (or deprecated IfSAR
 The extension is primarly intented to describe **products** of InSAR processing, typically interferograms and related products.
 
 - Examples:
-  - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
+  - [Simple Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
+  - [EPOS Item example](examples/item-epos.json): Shows the usage of the extension in a STAC Item with [EPOS data](https://gitlab.com/epos-tcs-satdata/productmetadata/-/blob/master/samples/UNWRAPPED_INTERFEROGRAM_InU_CNRIREA_20200814_20200820_ECJT.metadata)
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
@@ -28,7 +29,7 @@ The extension is primarly intented to describe **products** of InSAR processing,
 | insar:reference_datetime     | string | Date of reference acquisition, in UTC. It is formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).                                                                                                                                 |
 | insar:secondary_datetime     | string | Date of secondary acquisition, in UTC. It is formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).                                                                                                                                 |
 | insar:processsing_dem        | string | String representing the Digital Elevation Model used for processing the input data. A list is proposed in the [DEMs section](#digital-elevation-models-dems)                                                                                                                  |
-| insar:processsing_dem        | string | String representing the Digital Elevation Model used for geocoding the product. A list is proposed in the [DEMs section](#digital-elevation-models-dems)                                                                                                                      |
+| insar:geocoding_dem          | string | String representing the Digital Elevation Model used for geocoding the product. A list is proposed in the [DEMs section](#digital-elevation-models-dems)                                                                                                                      |
 
 ## Best Practices
 
@@ -36,17 +37,27 @@ The extension is primarly intented to describe **products** of InSAR processing,
 
 It is higly recommended to use the following fields to describe the InSAR product:
 
-| Field name                                                                                                          | InSAR usage                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| [date_time](https://github.com/radiantearth/stac-spec/blob/master/item-spec/common-metadata.md#date-and-time)       | Center Time of the product, in UTC. (Here the date is not significant)                              |
-| [sar:polarizations](https://github.com/stac-extensions/sar/#sarpolarizations)                                       | Any combination of polarizations of the input products.                                             |
-| [processing:level](https://github.com/stac-extensions/processing#suggested-processing-levels)                       | `L3` level is recommended since InSAR is a composite product.                                       |
-| [processing:lineage](https://github.com/stac-extensions/processing#item-properties-and-collection-provider-fields)  | Describe InSAR specific technique. For instance, `Geocoded Unwrapped Interferogram TOPSAR`          |
-| [processing:software](https://github.com/stac-extensions/processing#item-properties-and-collection-provider-fields) | Software used for InSAR processing. For instance `{"ESA SNAP Toolbox": "8.0"}, {"SNAPHU": "1.4.2"}` |
-| [sat:orbit_state](https://github.com/stac-extensions/sat#satorbit_state)                                            | `ascending` or `descending`                                                                         |
-| [sat:relative_orbit](https://github.com/stac-extensions/sat#satrelative_orbit)                                      | relative orbit (track) of the input datasets                                                        |
-| [view:azimuth](https://github.com/stac-extensions/view#item-properties)                                             | The azimuth angle of the center of the product.                                                     |
-| [view:incidence_angle](https://github.com/stac-extensions/view#item-properties)                                     | The incidence angle of the center of the product.                                                   |
+| Field name                                                                                                          | InSAR usage                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| [date_time](https://github.com/radiantearth/stac-spec/blob/master/item-spec/common-metadata.md#date-and-time)       | Center Time of the product, in UTC. (Here the date is not significant)                                                                  |
+| [sar:instrument_mode](https://github.com/stac-extensions/sar/#item-properties-or-asset-fields)                      | REQUIRED. The name of the sensor acquisition mode that is used                                                                          |
+| [sar:polarizations](https://github.com/stac-extensions/sar/#sarpolarizations)                                       | Any combination of polarizations of the input products.                                                                                 |
+| [sar:looks_range](https://github.com/stac-extensions/sar/#item-properties-or-asset-fields)                          | Number of range looks, which is the number of groups of signal samples (looks) perpendicular to the flight path                         |
+| [sar:looks_azimuth](https://github.com/stac-extensions/sar/#item-properties-or-asset-fields)                        | Number of azimuth looks, which is the number of groups of signal samples (looks) parallel to the flight path.                           |
+| [sar:observation_direction](https://github.com/stac-extensions/sar/#item-properties-or-asset-fields)                | Antenna pointing direction relative to the flight trajectory of the satellite, either left or right.                                    |
+| [sar:pixel_spacing_range ](https://github.com/stac-extensions/sar/#item-properties-or-asset-fields)                 | The range pixel spacing, which is the distance between adjacent pixels perpendicular to the flight path, in meters (m).                 |
+| [sar:pixel_spacing_azimuth ](https://github.com/stac-extensions/sar/#item-properties-or-asset-fields)               | The azimuth pixel spacing, which is the distance between adjacent pixels parallel to the flight path, in meters (m)                     |
+| [sar:resolution_range ](https://github.com/stac-extensions/sar/#item-properties-or-asset-fields)                    | The range resolution, which is the maximum ability to distinguish two adjacent targets perpendicular to the flight path, in meters (m). |
+| [sar:resolution_azimuth ](https://github.com/stac-extensions/sar/#item-properties-or-asset-fields)                  | The azimuth resolution, which is the maximum ability to distinguish two adjacent targets parallel to the flight path, in meters (m).    |
+| [processing:level](https://github.com/stac-extensions/processing#suggested-processing-levels)                       | `L3` level is recommended since InSAR is a composite product.                                                                           |
+| [processing:lineage](https://github.com/stac-extensions/processing#item-properties-and-collection-provider-fields)  | Describe InSAR specific technique. For instance, `Geocoded Unwrapped Interferogram TOPSAR`                                              |
+| [processing:software](https://github.com/stac-extensions/processing#item-properties-and-collection-provider-fields) | Software used for InSAR processing. For instance `{"ESA SNAP Toolbox": "8.0"}, {"SNAPHU": "1.4.2"}`                                     |
+| [proj:epsg](https://github.com/stac-extensions/projection#projepsg)                                                 | EPSG code of the projection of the product                                                                                              |
+| [sat:orbit_state](https://github.com/stac-extensions/sat#satorbit_state)                                            | `ascending` or `descending`                                                                                                             |
+| [sat:relative_orbit](https://github.com/stac-extensions/sat#satrelative_orbit)                                      | relative orbit (track) of the input datasets                                                                                            |
+| [sci:publications](https://github.com/stac-extensions/scientific#item-properties-and-collection-fields)             | DOI of publications citing the data                                                                                                     |
+| [view:azimuth](https://github.com/stac-extensions/view#item-properties)                                             | The azimuth angle of the center of the product.                                                                                         |
+| [view:incidence_angle](https://github.com/stac-extensions/view#item-properties)                                     | The incidence angle of the center of the product.                                                                                       |
 
 ### Assets roles
 
@@ -62,6 +73,8 @@ these role names then they will be specified in the future as more standard than
 | unwrapped_phase | 2D Filtered unwrapped interferogram geocoded in radians |
 | amplitude       | 2D Amplitude of interferogram in Watt                   |
 
+Combined with "standard" asset roles `data`, `overview`, `visual` and `metadata`, specific related assets can be included.
+
 ## Digital Elevation Models (DEMs)
 
 The DEM are named to commonly used datasets. The table below shows the common DEM dataset name based.
@@ -69,7 +82,7 @@ This list should not be considered definitive, and implementors are welcome to u
 
 | DEM Name       | Description                                                                                            | Spatial Resolution   |
 | -------------- | ------------------------------------------------------------------------------------------------------ | -------------------- |
-| SRTM1          | Shuttle Radar Topography Mission                                                                       | 1 arcseconds (~30m)  |
+| SRTM1          | Shuttle Radar Topography Mission                                                                       | 1 arcsecond (~30m)   |
 | SRTM3          | Shuttle Radar Topography Mission                                                                       | 3 arcseconds (~90m)  |
 | SRTM30         | Shuttle Radar Topography Mission                                                                       | 30 arcseconds (~1km) |
 | COP-DEM_EEA-10 | Copernicus DEM - European states (EEA39) including all islands of those countries plus French Overseas | 10m                  |
